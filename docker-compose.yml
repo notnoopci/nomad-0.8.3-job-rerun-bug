@@ -3,21 +3,21 @@ services:
   nomad-server-1:
     container_name: nomad-server-1
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-2
+    image: notnoopci/nomad:0.8.3-ddddddc300dc0
     volumes:
     - .:/code
 
   nomad-server-2:
     container_name: nomad-server-2
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-2
+    image: notnoopci/nomad:0.8.3-ddddddc300dc0
     volumes:
     - .:/code
 
   nomad-server-3:
     container_name: nomad-server-3
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-2
+    image: notnoopci/nomad:0.8.3-ddddddc300dc0
     volumes:
     - .:/code
 
@@ -32,7 +32,7 @@ services:
 
   nomad-client:
     command: nomad agent -config=/code/client.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-2
+    image: notnoopci/nomad:0.8.3-ddddddc300dc0
     privileged: true
     volumes:
     - .:/code
