@@ -1,0 +1,11 @@
+#!/bin/sh
+
+docker-compose logs \
+   | grep 'Total changes: (place 1)' \
+   | grep -o -e 'JobID: "[^"]*' \
+   | sort \
+   | uniq -c \
+   | sort -rn \
+   | grep -v -e '^ *1 Job' \
+   | sed 's|JobID: "||g'
+

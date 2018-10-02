@@ -18,24 +18,12 @@ To reproduce this bug and have meaningful data, we used a combination of the fol
 
 Steps to run:
 
-1. `docker-compose up -d && docker-compose scale nomad-clients=2`
-2. `NOMAD_ADDR=http://<NOMAD_SERVER_IP>:4646 nomad-watcher --events-logs=./nomad-events.json`
-  * _TODO_: package this into a docker container
-3. Start submitting jobs repeatedly by running following on host: `while true; do date; ./submit-job ; sleep 2; done`
+1. Run `scripts/start` to start simulation test
+2. Watch for output and wait until script finds some jobs that were re-run and hit `CTRL+C`
+3. Script will capture the docker logs and event stream of nomad allocs/evals/jobs to a run directory in `./run-xxxxxx`
+   and will emit the job ids worth inspecting
 
-Run for awhile and monitor for re-run jobs, a sample way to track this is to run the following command:
-
-```sh
-docker-compose logs \
-   | grep 'Total changes: (place 1)' \
-   | grep -o -e 'JobID: "[^"]*' \
-   | sort \
-   | uniq -c \
-   | sort -rn \
-   | grep -v -e '^ *1 Job'
-```
-
-Eventually, the command above will report some retried jobs.
+Eventually, the command above will report some retried jobs.  Inspect the relevant logs for a sample job id and associated allocs/evals.  [`jq`](https://stedolan.github.io/jq/) is your friend for analyzing `events.json`.
 
 ### Findings and observations
 

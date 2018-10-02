@@ -3,27 +3,36 @@ services:
   nomad-server-1:
     container_name: nomad-server-1
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-1
+    image: notnoopci/nomad:0.8.3-frequenty-gc-2
     volumes:
     - .:/code
 
   nomad-server-2:
     container_name: nomad-server-2
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-1
+    image: notnoopci/nomad:0.8.3-frequenty-gc-2
     volumes:
     - .:/code
 
   nomad-server-3:
     container_name: nomad-server-3
     command: nomad agent -config=/code/server.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-1
+    image: notnoopci/nomad:0.8.3-frequenty-gc-2
+    volumes:
+    - .:/code
+
+  nomad-watcher:
+    command: ["/bin/sh", "-c", "sleep 10; exec nomad-watcher --event-file=${NOMAD_EVENTS_PATH}"]
+    image: notnoopci/nomad-watcher:0.1
+    environment:
+      - NOMAD_ADDR=http://nomad-server-1:4646
+      - NOMAD_EVENTS_PATH
     volumes:
     - .:/code
 
   nomad-client:
     command: nomad agent -config=/code/client.hcl
-    image: notnoopci/nomad:0.8.3-frequenty-gc-1
+    image: notnoopci/nomad:0.8.3-frequenty-gc-2
     privileged: true
     volumes:
     - .:/code

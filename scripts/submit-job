@@ -4,7 +4,7 @@ set -ex
 
 POSTFIX="$(date +%s)-$(head -c 20 /dev/random  | sha1sum | awk '{print $1;}')"
 
-cat <<EOF | docker-compose exec -T nomad-server-1 nomad job run -
+cat <<EOF | nomad job run -
 job "example-${POSTFIX}" {
   datacenters = ["default"]
 

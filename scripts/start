@@ -1,0 +1,51 @@
+#!/bin/bash
+
+set -e
+
+RUN_LOG_PATH="run-$(date +%s)"
+export NOMAD_EVENTS_PATH="/code/${RUN_LOG_PATH}/events.json"
+
+echo "Keeping logs in ./${RUN_LOG_PATH}"
+echo
+
+mkdir -p "${RUN_LOG_PATH}"
+
+# clean up state completely
+echo '[destroying any previous state]'
+echo 
+docker-compose stop || true
+docker-compose rm --force -v || true
+
+# start
+echo
+echo '[starting services]'
+echo 
+docker-compose up -d
+
+function cleanup {
+  echo
+  echo "[ collecting logs and cleaning up ]"
+  echo
+  docker-compose logs --timestamps --no-color > "${RUN_LOG_PATH}/docker-compose.logs" 2>&1
+  echo "The following are the job id of re-run jobs"
+  ./scripts/find-rerun-jobs
+  echo
+  echo "  the logs are available in ${RUN_LOG_PATH}"
+}
+trap cleanup EXIT
+
+
+echo
+echo '[start submitting jobs]'
+echo
+sleep 20
+docker-compose exec -d nomad-server-1 /code/scripts/submit-jobs
+
+echo
+echo '[watching for re-run jobs]'
+echo
+while true
+do
+	echo "$(date -u): found $(./scripts/find-rerun-jobs | wc -l) re-run jobs"
+	sleep 30
+done
