@@ -1,0 +1,57 @@
+backbay:nomad-0.8 notnoop$ ./scripts/start
+Keeping logs in ./run-1538516335
+
+[destroying any previous state]
+
+Stopping nomad-08_nomad-client_1  ... done
+Stopping nomad-08_nomad-watcher_1 ... done
+Stopping nomad-server-2           ... done
+Stopping nomad-server-3           ... done
+Stopping nomad-server-1           ... done
+Going to remove nomad-08_nomad-client_1, nomad-08_nomad-watcher_1, nomad-server-2, nomad-server-3, nomad-server-1
+Removing nomad-08_nomad-client_1  ... done
+Removing nomad-08_nomad-watcher_1 ... done
+Removing nomad-server-2           ... done
+Removing nomad-server-3           ... done
+Removing nomad-server-1           ... done
+
+[starting services]
+
+Creating nomad-server-1           ... done
+Creating nomad-server-3           ... done
+Creating nomad-08_nomad-watcher_1 ... done
+Creating nomad-08_nomad-client_1  ... done
+Creating nomad-server-2           ... done
+
+[start submitting jobs]
+
+
+[watching for re-run jobs]
+
+Tue Oct  2 21:39:26 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:39:57 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:40:28 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:41:00 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:41:31 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:42:02 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:42:34 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:43:05 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:43:36 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:44:08 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:44:39 UTC 2018: found        0 re-run jobs
+Tue Oct  2 21:45:11 UTC 2018: found        4 re-run jobs
+Tue Oct  2 21:45:43 UTC 2018: found        4 re-run jobs
+Tue Oct  2 21:46:14 UTC 2018: found        4 re-run jobs
+Tue Oct  2 21:52:20 UTC 2018: found        4 re-run jobs
+Tue Oct  2 21:52:52 UTC 2018: found        5 re-run jobs
+^C
+[ collecting logs and cleaning up ]
+
+The following are the job id of re-run jobs
+   2 example-1538516778-de866fcb6f70b1a563af7d3b82835577b2c928fa
+   2 example-1538516576-20c54e9436920410124133f3ea472fb1650901fd
+   2 example-1538516564-3b40a53ce07b66f3666b3ffd55e4d450b3248cae
+   2 example-1538516561-1c102dfa198982e21f1d05804f2b0200e05bb145
+   2 example-1538516442-21bd780a4a70e609ef67b7a8a4d668450a33a9dd
+
+  the logs are available in run-1538516335
