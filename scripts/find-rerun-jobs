@@ -2,10 +2,9 @@
 
 docker-compose logs \
    | grep 'Total changes: (place 1)' \
-   | grep -o -e 'JobID: "[^"]*' \
+   | grep -o -e 'job_id=[^ ]*' \
    | sort \
    | uniq -c \
    | sort -rn \
-   | grep -v -e '^ *1 Job' \
-   | sed 's|JobID: "||g'
-
+   | grep -v -e '^ *1 job_id' \
+   | sed 's|job_id=||g'
