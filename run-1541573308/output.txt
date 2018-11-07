@@ -1,0 +1,64 @@
+backbay:nomad-0.8.3-job-rerun-bug notnoop$ ./scripts/start
+Keeping logs in ./run-1541573308
+
+[destroying any previous state]
+
+Stopping nomad-server-3                          ... done
+Stopping nomad-server-1                          ... done
+Stopping nomad-083-job-rerun-bug_nomad-client_1  ... done
+Stopping nomad-083-job-rerun-bug_nomad-watcher_1 ... done
+Stopping nomad-server-2                          ... done
+Going to remove nomad-server-3, nomad-server-1, nomad-083-job-rerun-bug_nomad-client_1, nomad-083-job-rerun-bug_nomad-watcher_1
+, nomad-server-2
+Removing nomad-server-3                          ... done
+Removing nomad-server-1                          ... done
+Removing nomad-083-job-rerun-bug_nomad-client_1  ... done
+Removing nomad-083-job-rerun-bug_nomad-watcher_1 ... done
+Removing nomad-server-2                          ... done
+
+[starting services]
+
+Creating nomad-server-3                          ... done
+Creating nomad-server-1                          ... done
+Creating nomad-server-2                          ... done
+Creating nomad-083-job-rerun-bug_nomad-watcher_1 ... done
+Creating nomad-083-job-rerun-bug_nomad-client_1  ... done
+
+[start submitting jobs]
+
+
+[watching for re-run jobs]
+
+Wed Nov  7 06:48:58 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:49:30 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:50:01 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:50:32 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:51:03 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:51:35 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:52:07 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:52:38 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:53:10 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:53:42 UTC 2018: found        0 re-run jobs
+Wed Nov  7 06:54:14 UTC 2018: found       12 re-run jobs
+Wed Nov  7 06:54:47 UTC 2018: found       12 re-run jobs
+Wed Nov  7 06:55:19 UTC 2018: found       12 re-run jobs
+^C
+[ collecting logs and cleaning up ]
+
+The following are the job id of re-run jobs
+   2 example-1541573611-e98b5b7161d8bf00e141be31e5b8138763a1e47a
+   2 example-1541573580-78acdd933ea5b31a29ffe1be6c643ef7009722ba
+   2 example-1541573565-f24968f5bb71b8086ec04dfa84dbfcc9d9c93042
+   2 example-1541573524-0effe4d47f236a546edc8680964ca73525c091e6
+   2 example-1541573515-eec6a74027f965ac1eedb9386025ce3d3623f7b3
+   2 example-1541573512-d4a14a4ca624d3609d8bfa0da9573a438980d11b
+   2 example-1541573500-47b2bf250eff36f1635268c7ade799c0a5c11834
+   2 example-1541573459-f1d942cb9c186cb0b82a326bac2b64ac0fb5027c
+   2 example-1541573410-70775995e5ec55e134976238b18d268845345b18
+   2 example-1541573401-b452c96ef350956884343275fedf89007050675d
+   2 example-1541573385-f0abc9d51fd3d3712de77e914ab4bd5afee01e79
+   2 example-1541573348-f1eac4b9e2480268a3fe518ceb40b0fc3faf2a7c
+
+  the logs are available in run-1541573308
+
+backbay:nomad-0.8.3-job-rerun-bug notnoop$
